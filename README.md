@@ -1,39 +1,17 @@
-# Assignment Five
-## Purpose
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/41591398-8e443cc2-41f5-4fa6-ae4b-619c5f51a12c?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D41591398-8e443cc2-41f5-4fa6-ae4b-619c5f51a12c%26entityType%3Dcollection%26workspaceId%3Dc7cff446-061e-4b91-8c7d-93565dae4d89#?env%5BDelgado_HW4%5D=W3sia2V5IjoiQkFTRV9VUkw9IiwidmFsdWUiOiJodHRwczovL2NzYzM5MTYtYXNzaWdubWVudDQtaDVtNi5vbnJlbmRlci5jb20iLCJlbmFibGVkIjp0cnVlLCJ0eXBlIjoiZGVmYXVsdCIsInNlc3Npb25WYWx1ZSI6Imh0dHBzOi8vY3NjMzkxNi1hc3NpZ25tZW50NC1oNW02Lm9ucmVuZGVyLmNvbSIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiaHR0cHM6Ly9jc2MzOTE2LWFzc2lnbm1lbnQ0LWg1bTYub25yZW5kZXIuY29tIiwic2Vzc2lvbkluZGV4IjowfSx7ImtleSI6IkFVVEhfVE9LRU4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJkZWZhdWx0Iiwic2Vzc2lvblZhbHVlIjoiSldULi4uIiwiY29tcGxldGVTZXNzaW9uVmFsdWUiOiJKV1QgZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SnBaQ0k2SWpZNE1EazFZbU5sWldRNVpEZGtNREExWVRabVpqWmpPQ0lzSW5WelpYSnVZVzFsSWpvaVlXeGhiaUlzSW1saGRDSTZNVGMwTlRRMU56ZzNObjAuckFnSUlxcGpVTGtXR2FyRHJiajIyQXM1X211ZV90emdXUmRFUUVNanF0OCIsInNlc3Npb25JbmRleCI6MX0seyJrZXkiOiJNT1ZJRV9JRCIsInZhbHVlIjoiIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6ImFueSIsInNlc3Npb25WYWx1ZSI6IjY3ZDdhMTkyMDg1MGQ0ODc0ODM1MTE2NyIsImNvbXBsZXRlU2Vzc2lvblZhbHVlIjoiNjdkN2ExOTIwODUwZDQ4NzQ4MzUxMTY3Iiwic2Vzc2lvbkluZGV4IjoyfV0=)
 
-The purpose of this assignment is to create a React Single Page App over your developed API.  The interface will allow the users to search for movies, display information about the movie, see stored ratings, and allow the user to enter a rating.
+https://csc3916-assignment4-h5m6.onrender.com
+https://csc3916-react19-kgem.onrender.com
+https://github.com/HavelMom/CSC3916_REACT19
 
-## Pre-Requirements
-- Assignment 3 deployed REACT app that supports SignUp and Logon
-- Assignment 4 that supports reviews
+Above are all the links necessary. 
+The assignment 4 (this repo) is the backend, while the react repo (linked above) is the front end. 
 
-## Requirements
-- Update your API to support storing an image (or image URL) for the movies you have stored.  You will use the image URL in your React application to show the image of movies
-    - New Attribute on the movie collection
-- For this assignment all your endpoints should be protected by JWT authentication
-- Implement the following interfaces
-    - User SignUp and User Logon
-        - Leverage your User mongoDB collection to store new users of the application
-    - Main screen should show the top rated movies (show at least 5)
-        - Your GET /movies endpoint should sort by rating (server side)
-            - Update your /movies (with reviews=true) endpoint to sort by average rating descending
-    - Movie Detail screen, shows the Movie, Image, Actors that were in the movie, aggregated rating for the movie and grid that shows the reviews (username, rating, review)
-    - Extra Credit: (7 points) - chapter 25 of (https://www.amazon.com/dp/B0979MGJ5J?_encoding=UTF8&psc=1&ref_=cm_sw_r_cp_ud_dp_M9YGPJNZWB3BK0P59QX3) Movie Search – show results in a grid, accordion or other list control
-        - Add Search API (HTTP POST) to the API that can take partial movie names or partial actor names
+We have added the ability to add / remove and view reviews made on movies. We did this by adding / building on top of the repo we had before, assignment 3. 
 
-## Submissions
-- User is able to Sign-up (name, username, password)
-- User is able to Logon to the application (username, password)
-- User is able to see list of movies and select a movie to see the detail screen (top rated movies displayed)
-- User is able to enter a review on the detail page (enter a rating and comment) – the logged in user’s username will be associated with the review (as captured from the JSON Web Token)
+There isn't any real environment settings needed besides the standard npm install / npm test. 
 
-## Rubic
-- -3 Not able to add comments
-- -2 Not aggregating rating (average rating)
-- -3 if not pointed to correct end point (e.g Hw4 endpoint)
-- -5 if you don’t have a react web site deployed 
+Both repos have been deployed on Render, (web service for the assignment4 repo, static site for the react repo). 
 
-## Resources
-- https://github.com/facebook/create-react-app
-- https://github.com/mars/create-react-app-buildpack#user-content-requires
+Environments are only used in the postman but added in the postman link above. 
 
