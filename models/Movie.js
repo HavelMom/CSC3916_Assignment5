@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../db');
 const Schema = mongoose.Schema;
 const express = require('express');
 const router = express.Router();

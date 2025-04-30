@@ -1,73 +1,32 @@
-/**
- * Created by shawnmccarthy on 1/22/17.
- */
-'use strict;';
-//Include crypto to generate the movie id
-var crypto = require('crypto');
-module.exports = function () {
-    return {
-        userList: [],
-        /*
-         * Save the user inside the "db".
-         */
-        save: function (user) {
-            user.id = crypto.randomBytes(20).toString('hex'); // fast enough for our purpose
-            this.userList.push(user);
-            return 1;
-        },
-        /*
-         * Retrieve a movie with a given id or return all the movies if the id is undefined.
-         */
-        find: function (id) {
-            if (id) {
-                return this.userList.find(function (element) {
-                    return element.id === id;
-                });
-            }
-            else {
-                return this.userList;
-            }
-        },
-        findOne: function (name) {
-            if (name) {
-                return this.userList.find(function (element) {
-                    return element.username === name;
-                });
-            }
-            else {
-                return this.userList;
-            }
-        },
-        /*
-         * Delete a movie with the given id.
-         */
-        remove: function (id) {
-            var found = 0;
-            this.userList = this.userList.filter(function (element) {
-                if (element.id === id) {
-                    found = 1;
-                }
-                else {
-                    return element.id !== id;
-                }
-            });
-            return found;
-        },
-        /*
-         * Update a movie with the given id
-         */
-        update: function (id, user) {
-            var userIndex = this.userList.findIndex(function (element) {
-                return element.id === id;
-            });
-            if (userIndex !== -1) {
-                this.userList[userIndex].username = user.username;
-                this.userList[userIndex].password = user.password;
-                return 1;
-            }
-            else {
-                return 0;
-            }
-        }
-    };
-};
+// db.js
+const mongoose = require('mongoose');
+
+// Pull the MongoDB URI from your environment
+const { DB: MONGO_URI } = process.env;
+
+if (!MONGO_URI) {
+  console.error('❌ MONGO_URI (process.env.DB) not set');
+  process.exit(1);
+}
+
+// Connect once at application startup
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('✅ MongoDB connected'))
+  .catch(err => {
+    console.error('❌ MongoDB connection error:', err);
+    process.exit(1);
+  });
+
+// Optional: monitor disconnects/reconnects
+mongoose.connection.on('disconnected', () =>
+  console.warn('⚠️  MongoDB disconnected — attempting reconnect')
+);
+mongoose.connection.on('reconnected', () =>
+  console.log('🔄 MongoDB reconnected')
+);
+
+// Export the mongoose singleton for models to use
+module.exports = mongoose;

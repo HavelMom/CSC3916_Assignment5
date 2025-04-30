@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
   const review = await Review.create({
     movieId,
     rating,
-    comment,
+    review: comment,
     username: req.user.username
   });
   res.status(201).json(review);
