@@ -27,11 +27,27 @@ router.post('/signup', async (req, res) => {
 // POST /auth/signin
 router.post('/signin', async (req, res) => {
   const { username, password } = req.body;
-  const user = await User.findOne({ username });
-  if (!user || !(await bcrypt.compare(password, user.password))) {
+  
+  // Include the password field (it’s excluded by default)
+  const user = await User
+    .findOne({ username })
+    .select('+password');
+  
+  if (!user) {
     return res.status(401).json({ message: 'Invalid credentials.' });
   }
-  const token = jwt.sign({ id: user._id, username: user.username }, SECRET, { expiresIn: '7d' });
+
+  // Now user.password is defined
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    return res.status(401).json({ message: 'Invalid credentials.' });
+  }
+
+  const token = jwt.sign(
+    { id: user._id, username: user.username },
+    SECRET,
+    { expiresIn: '7d' }
+  );
   res.json({ token });
 });
 
