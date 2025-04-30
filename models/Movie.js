@@ -1,8 +1,6 @@
 const mongoose = require('../db');
 const Schema = mongoose.Schema;
 const express = require('express');
-const router = express.Router();
-const authJwtController = require('./auth_jwt');
 
 // Connect to MongoDB
 mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
